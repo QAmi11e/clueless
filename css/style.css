@@ -3,6 +3,21 @@ aside{
     padding: 15%;
 }
 
+
+main{
+    flex-basis: 50%;
+    text-align: right;
+}
+
+body{
+    background-image: url("https://static.vecteezy.com/system/resources/previews/023/069/889/large_2x/40-stick-figure-set-pictogram-sticman-free-vector.jpg");
+    margin: 0;
+    height: 100;
+    background-repeat: no-repeat;
+    background-size: auto 500px;
+    background-position: 10% ;
+}
+
 #topSelect{
     flex-direction: row;
 }
@@ -31,7 +46,3 @@ h2{
 }
 
 
-main{
-    flex-basis: 50%;
-    text-align: right;
-}

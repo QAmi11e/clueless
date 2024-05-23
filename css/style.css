@@ -3,6 +3,10 @@ aside{
     padding: 15%;
 }
 
+#topSelect{
+    flex-direction: row;
+}
+
 
 button{
     align-items: center;

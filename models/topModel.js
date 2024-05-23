@@ -1,4 +1,9 @@
 const topsArray = [
+    {
+        id: 0,
+        name: "None",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7e-2l-zHK44dUf7vkbA-qfttngGAx1FPbvkwaawqJiw&s"
+    },
     { 
         id: 1,
         name: "Android User",
@@ -19,9 +24,14 @@ const topsArray = [
 ];
 
 module.exports = {
-    getAll,
+    getAll, getOne,
 };
 
 function getAll(){
     return topsArray;
+};
+
+function getOne(id){
+    const top = topsArray.find((top)=> top.id === parseInt(id));
+    return top; 
 };

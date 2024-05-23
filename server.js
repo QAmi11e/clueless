@@ -2,7 +2,8 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const topsRouter = require("./routes/topsRouter")
+const topsRouter = require("./routes/topsRouter");
+const bottomsRouter = require("./routes/bottomsRouter");
 
 
 
@@ -19,7 +20,8 @@ app.use(logger('dev'));
 app.get("/", function(req, res){
     res.json("You're on the empty path");
 })
-app.use("/tops",topsRouter)
+app.use("/tops",topsRouter);
+app.use("/bottoms", bottomsRouter);
 
 //Request Listener
 app.listen(PORT, function(){

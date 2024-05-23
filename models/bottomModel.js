@@ -12,13 +12,13 @@ const bottomsArray = [
 
     { 
         id: 2,
-        name: "Navy Blue Pants",
+        name: "Pikachu Pants",
         url: "https://i.imgur.com/O89b3R4.png"
     },
 
     { 
         id: 3,
-        name: "Pikachu Pants",
+        name: "Cargos",
         url: "https://i.imgur.com/vXTRM0u.png"
     }
 ];

@@ -4,30 +4,32 @@ let tops;
 let topId;
 let oneTop;
 let topRes;
-let topSelect = document.getElementById("topSelect");
-let topImageDiv = document.querySelector(".topImage");
-const topBtn = document.getElementById("topBtn");
+let topSelectEl = document.getElementById("topSelect");
+let topImageDivEl = document.querySelector(".topImage");
+const topBtnEl = document.getElementById("topBtn");
 
 // ----- BOTTOMS SETUP
 let bottoms;
 let bottomsId;
 let oneBottom;
 let bottomRes;
-let bottomSelect = document.getElementById("bottomSelect");
+let bottomSelectEl = document.getElementById("bottomSelect");
 let bottomImageDiv = document.querySelector(".bottomImage");
 const bottomBtn = document.getElementById("bottomBtn");
 
+//----- OTHER BUTTONS
+const clearBtn = document.getElementById("clearBtn");
 
 
-//--------------------------------------------------- Function calls + Definitions
+
+//--------------------------------------------------- Function calls + Definitions -------------------------------
 
 fetchTops(); //gets all the tops for the select + adds to the existing dropdown in the HTML
 async function fetchTops(){
     const response = await fetch("http://localhost:3000/tops");
-    let id = 0;
     tops = await response.json();
     tops.forEach(top => {
-        topSelect.innerHTML += `<option value = ${top.name}, topId = ${id++} >${top.name}</option>`;
+        topSelectEl.innerHTML += `<option value = ${top.id} >${top.name}</option>`;
     });
 }//end of FetchTops
 
@@ -35,39 +37,75 @@ async function fetchTops(){
 fetchBottoms(); //gets all the tops for the select + adds to the existing dropdown in the HTML
 async function fetchBottoms(){
     const response = await fetch("http://localhost:3000/bottoms");
-    let id = 0;
     bottoms = await response.json();
     bottoms.forEach(bottom => {
-        bottomSelect.innerHTML += `<option value = ${bottom.name}, bottomId = ${id++} >${bottom.name}</option>`;
+        bottomSelectEl.innerHTML += `<option value = ${bottom.id} >${bottom.name}</option>`;
     });
 }//end of FetchBottoms
 
-//------------------------- Event Listeners
-// > Tops 
-topBtn.addEventListener("click", async function(){
-    //const topOption = topSelect.options[topSelect.selectedIndex];
-    //console.log(id);
-    console.log('THATS THAT')
-    topRes = await fetch(`http://localhost:3000/tops/1`); //cannot use /:id right now. idk why )-:
+async function submitNewOutfit(){
+    
+    const options ={
+        method: "POST",
+        body: oneBottom, oneTop,
+    }
+    const response = await fetch("http://localhost:3000/savedOutfits");
+}
+
+
+
+//--------------------------------------------------- Event Listeners -------------------------------
+
+// > Tops ------------------------
+topBtnEl.addEventListener("click", async function(){
+    topRes = await fetch(`http://localhost:3000/tops/${topSelectEl.value}`); //cannot use /:id right now. idk why )-:
     oneTop = await topRes.json();
-    console.log(oneTop);
     let oneTopUrl = oneTop.url;
-    topImageDiv.innerHTML = `<img src=${oneTopUrl}>`; 
-});
+    topImageDivEl.innerHTML = `<img src=${oneTopUrl}>`; 
+}); //end of topBtn
 
 
-// > Bottoms
+// > Bottoms ----------------------------
 bottomBtn.addEventListener("click", async function(){
-    bottomRes = await fetch(`http://localhost:3000/bottoms/1`); //:id wHYYYYYYYYYYYY
+    bottomRes = await fetch(`http://localhost:3000/bottoms/${bottomSelectEl.value}`); //:id wHYYYYYYYYYYYY
     oneBottom = await bottomRes.json();
-    console.log(oneBottom);
     let oneBottomUrl = oneBottom.url;
     bottomImageDiv.innerHTML = `<img src=${oneBottomUrl}>`;
-});
+}); //end of bottomBtn
+
+
+// > Clear Button -----------------------------
+clearBtn.addEventListener("click", async function(){
+    const topImageDivImgEl = document.querySelector('.topImage img');
+    const bottomImageDivImgEl = document.querySelector('.bottomImage img');
+    if (bottomImageDivImgEl) {
+      bottomImageDivImgEl.removeAttribute('src');
+    }
+    if(topImageDivImgEl){
+        topImageDivImgEl.removeAttribute('src');
+    }
+  });
+
+  // > Save Outfit Form -----------------------------
+  document.querySelector("form").addEventListener("submit", function(evt){
+    evt.preventDefault();
+    submitNewOutfit();
+  })
+
+
+
+
+
+
+
+
+
+
+
 
 /* Scrapping this for now.
 document.addEventListener('DOMContentLoaded', async function(event) {
-    topSelect.addEventListener('change', (event) => {
+    topSelectEl.addEventListener('change', (event) => {
         const selectedTop = event.target.value;
         console.log(`Selected value: ${selectedTop}`); 
     });

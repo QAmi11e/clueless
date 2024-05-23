@@ -6,7 +6,7 @@ const topsArray = [
     },
     { 
         id: 1,
-        name: "Android User",
+        name: "Android",
         url: "https://i.imgur.com/sIgZ5a4.png"
     },
 
@@ -18,7 +18,7 @@ const topsArray = [
 
     { 
         id: 3,
-        name: "Software Developer Hoodie",
+        name: "Software Developer Zip Up Hoodie",
         url: "https://i.imgur.com/pR8eB9h.png"
     }
 ];

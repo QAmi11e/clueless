@@ -4,6 +4,7 @@ const logger = require("morgan");
 const cors = require("cors");
 const topsRouter = require("./routes/topsRouter");
 const bottomsRouter = require("./routes/bottomsRouter");
+const savedOutfitsRouter = require("./routes/savedOutfitsRouter");
 
 
 
@@ -22,6 +23,7 @@ app.get("/", function(req, res){
 })
 app.use("/tops",topsRouter);
 app.use("/bottoms", bottomsRouter);
+app.use("/savedOutfits", savedOutfitsRouter);
 
 //Request Listener
 app.listen(PORT, function(){

@@ -18,10 +18,10 @@ body{
     background-position: 10% ;
 }
 
+
 #topSelect{
     flex-direction: row;
 }
-
 
 button{
     align-items: center;
@@ -41,7 +41,7 @@ h1{
 
 h2{
     font-size: 30px;
-    text-align: right;
+    text-align: center;
     margin-right: 50%;
 }
 
